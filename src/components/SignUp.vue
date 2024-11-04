@@ -11,7 +11,7 @@
   </div>
 </template>
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from '../axiosConfig'
 
@@ -27,9 +27,15 @@ import axios from '../axiosConfig'
       }
     } catch (error) {
       console.log(error.message)
-    }
-    
+    }    
   }
+
+  onMounted (() => {
+    let user = localStorage.getItem('user')
+    if(user){
+      router.push({name: 'home'})
+    }
+  })  
 </script>
 
 <style scoped>
