@@ -12,16 +12,18 @@
 </template>
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import axios from '../axiosConfig'
 
   const user = ref({})
+  const router = useRouter()
   
   const signUp = async () => {
     try {
       const result = await axios.post('/user', user.value)
       if (result.status === 201) {
         localStorage.setItem('user', JSON.stringify(result.data))
-        user.value = {}
+        router.push({name: 'home'})
       }
     } catch (error) {
       console.log(error.message)
