@@ -3,15 +3,15 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
-import { useRouter } from 'vue-router';
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
   onMounted(() => {
     let user = localStorage.getItem('user')
     if(!user){
-      router.push({name: 'signup'})
+      router.push({name: 'login'})
     }
   })
 </script>
