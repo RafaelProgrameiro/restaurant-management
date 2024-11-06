@@ -5,7 +5,7 @@
     <div class="login">
       <input type="email" v-model="user.email" placeholder="Enter Email">
       <input type="password" v-model="user.password" placeholder="Enter Password">
-      <button @click="login">Login</button>
+      <button @click="login"  @keyup.enter="login">Login</button>
       <p>
         Don't have an account?
         <router-link to="/signup">Go to Sign up</router-link>
@@ -25,7 +25,6 @@ import { useRouter } from 'vue-router'
   const login = async () => {
     try {
       const result = await axios.get(`/user?email=${user.value.email}&password=${user.value.password}`)
-      console.log(result.data)
       if(result.status === 200 && result.data.length > 0){
         localStorage.setItem('user', JSON.stringify(result.data[0]))
         router.push({name: 'home'})
