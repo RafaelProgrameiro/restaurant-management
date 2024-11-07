@@ -3,19 +3,34 @@
   <router-link to="/">Home</router-link>
   <router-link to="/add-restaurant">Add Restaurant</router-link>
   <router-link to="/update-restaurant">Update Restaurant</router-link>
-  <a @click="logout" href="#">Logout</a>
+  <a v-if="logoutButton" @click="logout" href="#">Logout</a>
 </div>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
+import { ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import {userIsLogged} from '../utils/auth'
 
   const router = useRouter()
+  const route = useRoute()
+
+  const logoutButton = ref(userIsLogged())
+
   const logout = () => {
     localStorage.clear()
-    router.push({name: 'login'})
-    
+    logoutButton.value = false
+    router.push({name: 'login'})    
   }
+
+  watch(
+    () => route.fullPath,
+    () => {
+      logoutButton.value = userIsLogged()
+    }
+  )
+
+
 </script>
 
 <style scoped>
@@ -23,6 +38,7 @@ import { useRouter } from 'vue-router'
     background-color: #333;
     overflow: hidden;
     margin-bottom: 30px;
+    margin-left: 5px
   }
 
   .nav a{

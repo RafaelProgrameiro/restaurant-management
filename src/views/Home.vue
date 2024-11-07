@@ -5,13 +5,11 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import {userIsLogged} from '../utils/auth'
 
 const router = useRouter()
 
   onMounted(() => {
-    let user = localStorage.getItem('user')
-    if(!user){
-      router.push({name: 'login'})
-    }
+    if(!userIsLogged()) router.push({name: 'login'})    
   })
 </script>

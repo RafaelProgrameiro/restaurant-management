@@ -5,7 +5,7 @@
     <div class="login">
       <input type="email" v-model="user.email" placeholder="Enter Email">
       <input type="password" v-model="user.password" placeholder="Enter Password">
-      <button @click="login"  @keyup.enter="login">Login</button>
+      <button @click="login">Login</button>
       <p>
         Don't have an account?
         <router-link to="/signup">Go to Sign up</router-link>
@@ -18,6 +18,7 @@
 import { onMounted, ref } from 'vue'
 import axios from '../axiosConfig'
 import { useRouter } from 'vue-router'
+import {userIsLogged} from '../utils/auth'
 
   const user = ref({})
   const router = useRouter()
@@ -36,12 +37,8 @@ import { useRouter } from 'vue-router'
     }
     
   }
-
-  onMounted(() => {
-    let user = localStorage.getItem('user')
-    if(!user) {
-      router.push({name: 'login'})
-    }
+  onMounted (() => {
+    if(userIsLogged()) router.push({name: 'home'})
   })
 
 </script>
