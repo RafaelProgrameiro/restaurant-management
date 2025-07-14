@@ -27,8 +27,8 @@ Projeto criado com foco em aprendizado prático de Vue.js. A aplicação permite
 ### 1. Clone o repositório
 
 bash
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
-cd nome-do-repositorio
+git clone git@bitbucket.org:rafaelprogrameiro/projeto-weather-app.git
+cd projeto-weather-app
 
 ### 2. Instale as dependências
 
