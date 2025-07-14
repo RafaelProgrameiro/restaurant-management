@@ -27,35 +27,24 @@ Projeto criado com foco em aprendizado prático de Vue.js. A aplicação permite
 ### 1. Clone o repositório
 
 bash
-# Comandos para clonar o repositório
-# ------------------------------------------------
-# git clone https://github.com/seu-usuario/nome-do-repositorio.git
-# cd nome-do-repositorio
-
+git clone https://github.com/seu-usuario/nome-do-repositorio.git
+cd nome-do-repositorio
 
 ### 2. Instale as dependências
 
 bash
-# Instalação das dependências do projeto
-# ------------------------------------------------
-# npm install
+npm install
 
 
 ### 3. Rode o servidor da API (JSON Server)
 
 bash
-# Inicia o JSON Server em http://localhost:3000
-# ------------------------------------------------
-# npx json-server --watch db.json --port 3000
-
+npx json-server --watch db.json --port 3000
 
 ### 4. Inicie a aplicação
 
 bash
-# Inicia o servidor de desenvolvimento Vue
-# ------------------------------------------------
-# npm run serve
-
+npm run serve
 
 Acesse em: `http://localhost:8080`
 
